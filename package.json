@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "axios": "^0.21.1",
+    "readline-sync": "^1.4.10"
+  },
+  "name": "exo-async-0",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT"
+}
