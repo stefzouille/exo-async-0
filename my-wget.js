@@ -6,13 +6,18 @@ const axios = require("axios");
 const fsPromises = require("fs/promises");
 const chalk = require("chalk");
 
+if ( process.argv.length ! == 3) {
+  console.log('usage : enter a url in commande')
+  process.exit(1)
+}
+
 const main = async () => {
   try {
-    const response = await axios.get("https://fr.wikipedia.org/wiki/Zizi");
+    const response = await axios.get(process.argv[2]);
     await fsPromises.writeFile("index.html", response.data);
     const txt = await fsPromises.stat("./index.html", "utf-8");
-    console.log(chalk.red(`the big size of file is: ${txt.size}`));
     console.log(response.headers);
+    console.log(chalk.red(`the big size of file is: ${txt.size}`));
   } catch (e) {
     console.log(e.message);
   }
